@@ -1,0 +1,72 @@
+
+Optimization Of Queries :
+
+	Queries became more powerful when we using operators along with it .
+	Relational and Logical  Operators are used to make the query powerful.
+	
+MONGO DB Operators:
+
+	$and:
+	    - All conditions in the filter need to be satisfied.
+	    - Can be used in all filer places . find() , update() , delete() ;
+	    - It accepts array of Filters.
+	    - when we give multiple condition to filter condition it will implicitly act as  " and operator " 
+
+	Sample Query:
+
+	  db.CollectionName.find(
+				{$and : [ {"name":"john"} , {"age":19} ] } 
+			      );
+        
+	db.collectionName.updateMany( 
+					{ $and : [ "city" : " blr" , "pin":543112] } , 
+					{"pin":872692, "status":"active"}
+				    );
+
+	$or:
+	   - Need to satisfy any one condition.
+	   - Replace $and with $or in the above queries.
+
+
+ lte - less than or equal 
+ gte - greater than or equal 
+ lt  - less than 
+ gt  - greater than 
+ eq  - equal to 
+ ne  - not equal to 
+
+Query with $gte operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$gte : 30} }
+					      );
+Query with $lte operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$lte : 30} }
+					      );
+Query with $gt operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$gt : 30} }
+					      );
+Query with $lt operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$lt : 30} }
+					      );
+Query with $eq operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$eq : 30} } , 
+						{"age": 19}
+					      );
+Query with $ne operator :
+			
+			db.CollectionName.find(
+  						{"tax": {$ne : 30} }
+					      );
+
+
+
+			

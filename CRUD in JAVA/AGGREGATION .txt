@@ -1,0 +1,33 @@
+AGGREGATION :
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.AggregateIterable;
+import org.bson.Document;
+
+import java.util.Arrays;
+
+public class AggregateExample {
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
+            MongoDatabase database = mongoClient.getDatabase("school");
+            MongoCollection<Document> studentCollection = database.getCollection("students");
+
+            // Aggregation pipeline: Group by grade and calculate average age
+            List<Document> pipeline = Arrays.asList(
+                    new Document("$group", new Document("_id", "$grade")
+                            .append("averageAge", new Document("$avg", "$age")))
+            );
+
+            AggregateIterable<Document> result = studentCollection.aggregate(pipeline);
+
+            // Print the result
+            for (Document document : result) {
+                System.out.println(document.toJson());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

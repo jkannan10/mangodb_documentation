@@ -1,0 +1,10 @@
+Projection :
+
+ When selecting a document it shows all the field in the document.
+ When we want to show only specific details while retriving the data we can achieve it by on and off the fields.
+
+	db.collectionname.find({"tax":{$gt: 300}} , {"name":1 , "_id" : 1});
+
+it only shows name and _id field in a document 
+
+

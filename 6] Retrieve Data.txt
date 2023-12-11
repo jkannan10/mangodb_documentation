@@ -1,0 +1,21 @@
+Retrieve Data :
+
+There are multiple methods available to retieve data from a colleection
+	 
+	- find() --> Retrieve all the documents.
+	- findOne() --> Retrieve one document from the collection which mets criteria.
+	- find({}) --> Retrive document which passes the filter.
+	- findOneAndReplace({},<replace>) ---> find the document and replace with given document.
+	- findOneAndDelete({}) ---> find the document and delete it.
+
+Query:
+
+	db.CollectionName.find();
+
+	db.CollectionName.findOne({"city":"chennai"});
+
+	db.collectionName.find({"city":"chennai","area":"omr"});
+
+	db.CollectionName.findOneAndReplace({"name":"gzxv"},{"mob":83746276,"add":"ajsvc"});
+
+	db.CollectionName.findOneAndDelete({"mob":83746276}); //It is not recommanded to delete documents using this function.

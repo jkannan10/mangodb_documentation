@@ -1,0 +1,57 @@
+INSERTION DURING RUNTIME :
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class InsertMultipleStudentsExample {
+    public static void main(String[] args) {
+        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
+            MongoDatabase database = mongoClient.getDatabase("school");
+            MongoCollection<Document> studentCollection = database.getCollection("students");
+
+            Scanner scanner = new Scanner(System.in);
+
+            // Get the number of students to insert
+            System.out.print("Enter the number of students to insert: ");
+            int numberOfStudents = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+
+            List<Document> studentsList = new ArrayList<>();
+
+            // Loop to gather information for each student
+            for (int i = 0; i < numberOfStudents; i++) {
+                System.out.println("\nEnter information for student #" + (i + 1));
+
+                System.out.print("Enter student name: ");
+                String name = scanner.nextLine();
+
+                System.out.print("Enter student age: ");
+                int age = scanner.nextInt();
+                scanner.nextLine(); // Consume the newline character
+
+                System.out.print("Enter student grade: ");
+                String grade = scanner.nextLine();
+
+                // Create a new document based on user input
+                Document studentDocument = new Document("name", name)
+                        .append("age", age)
+                        .append("grade", grade);
+
+                studentsList.add(studentDocument);
+            }
+
+            // Insert the list of documents into the MongoDB collection
+            studentCollection.insertMany(studentsList);
+
+            System.out.println("Students added successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

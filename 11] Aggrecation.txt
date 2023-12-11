@@ -1,0 +1,78 @@
+Aggregation :
+
+	- Aggregation is similar like find method.
+	- The key element in aggregation is pipeline.
+
+Pipeline :
+
+	- Pipeline contains series of stages or operations that need to be performed.
+	- Pipeline is an array.
+
+Aggregation stages :
+	 - $size ---> return the size of the array .
+          	 ---> the $ symbol is used to indicate the name of the field whose size you want to calculate.
+		 ---> numberOfOrders:{$size:"$orders"}
+
+	 - $group ---> used for grouping the document.
+		  ---> works similar like group by function in sql .
+		  ---> _id is used for grouping .
+	
+	 - $project ---> works like projection.
+		    ---> used to determine which are the fields are need to show in the output.
+
+	 - $lookup ---> used to join two collections.
+		   ---> it performs left outer join.
+
+	 - $sort ---> used to sort the data based on given
+		 ---> can sort ascending and decending order.
+
+	 - $limit ---> to display how many documents can be specified through this .
+
+	 - $sum   ---> sum all values .
+
+	 - $avg   ---> used to calculate avg of values.
+
+	 - $multiply ---> used to multply values in two or more keys.
+
+sample query :
+
+ query for $size:
+		 db.student.aggregate([
+					{ 
+						$project:{"name": 1 , NoOfGrades:{$size:"$grades"} 
+					}
+				    ]);
+query for $group:
+		db.sales.aggregate([
+            				 {
+       					     $group: {
+                  					     _id: "$product",   // Group by the "product" field
+                   					     totalQuantity: { $sum: "$quantity" },
+                  					     totalRevenue: { $sum: { $multiply: ["$quantity", "$price"] } }
+               					     }
+    					 }
+				]) ;
+
+query for $lookup :
+
+		db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",    // The collection to join with
+      localField: "customerId",   // The field from the "orders" collection
+      foreignField: "_id",        // The field from the "customers" collection
+      as: "customerInfo"          // The alias for the joined data
+    }
+  }
+]);
+
+
+
+query for $sort :
+
+		db.person.aggregate([{$sort :name :1}]); // Ascending
+		db.person.aggregate([{$sort :name :-1}]); // Decending
+
+query for limit :
+
+		db.person,aggrgate([{$group : {_id : "$city" , TotalSalaryOfCity : {$sum :"$salary"}} , {$limit : 3}]);

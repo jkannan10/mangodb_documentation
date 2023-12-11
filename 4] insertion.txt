@@ -1,0 +1,13 @@
+Inserting Document:
+
+db.collectionName.insert(document);
+
+db.collectionName.insertMany([ document1 , document 2 , ... ]);
+
+	- We can insert one or more document at a time.
+	- We can insert any document into the collection.
+	- Every document has a unique id called _id which is 24 	  character id.
+	- _id is primary key of ua collection.
+
+can we change the value in _id ?
+	- yes , we can .

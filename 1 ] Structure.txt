@@ -1,0 +1,43 @@
+RDBMS :
+Tables , Rows , Columns 
+Table stands for entity ---> Person , Student , Course , Address 
+
+Column stands for attributes --> field inside the table --> street , mobile , area , city 
+
+Row contains the actual data 
+
+         
+Mongo DB : (No sql database)
+
+Document : 
+           Document is a data which represented in  key - value pair.
+           Any JSON file is a valid mongo DB document. mango DB uses BSOn format to store data.BSOn --> (Binary JSON )
+           Each document may vary.That is each document can have different attributes.
+           It can have any datatype as long as it is valid mongo DB datatype.
+           Mongo DB add a key automatically for each document .it is called _id.
+
+          {
+             "_id":unique value 
+             "name" :"jk",
+             "age" :19
+          },
+          {+
+             "_id":unique value 
+             "name" :"sk",
+             "age" :20
+             "phone":3746238745
+          }
+
+Collection : 
+             Set / group of  related documents .
+             Can have any number of documents.
+             It have documents which have same or different attributes of documents.
+             Collection do not enforce the user to insert data in specified format.
+             No joins conncept.
+             Joins of collection are done using Aggregations.
+
+DataBase : 
+          One or more collection together is called database.
+          It is physical container for Collection.
+
+

@@ -1,0 +1,24 @@
+Commands : DDL
+
+use databse_name;
+
+If there is no database present in the given name then it create a DB,
+If there is already a database present in the provided name then it switched to the provided database.
+
+db.dropDatabase();
+
+If you use this command on current DB then it drop the current DB .
+
+
+db.createCollection("<MyCollection>");
+
+Used to create a colletion in the current DB.
+
+db.< collectionName >.drop();
+
+used to drop the specified collection in the DB.
+
+
+
+
+

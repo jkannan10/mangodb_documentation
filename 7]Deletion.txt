@@ -1,0 +1,22 @@
+Deletion:
+
+	There are two functions in deleting a document .
+
+		- deleteOne() --> delete one document.
+		- deleteMany({}) --> delete many documents at once.
+
+deleteMany:
+
+	- Delete many documents at once based on the filter.
+	
+	- When passing empty curly braces as filter the it delete all documents.
+
+Query :
+
+       db.CollectionName.deleteMany({});
+
+       db.yourCollectionName.deleteMany({"name":"john"});
+
+       db.yourCollectionName.deleteOne();
+
+       db.yourCollectionName.deleteOne({"age":19});

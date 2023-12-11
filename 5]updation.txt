@@ -1,0 +1,38 @@
+Update Documents :
+	
+	There are three methods are used to update the document in mongo db.
+	
+	- update --> deprecated 
+	- updateOne --> update the first record which mets the specified condtion.
+	- updateMany --> update all documents which mets the specified condition.
+
+
+Query:
+	db.CollectionName.updateOne(
+ 				     {condition}
+				     {$set : {property 1 , property 2 , property 3 , .....} }
+				   );
+	db.person.updateOne(
+				{name:"john"}
+				{$set:{
+					age :19 ,
+	       				city :"madurai" 
+				       }
+				}
+			   );
+
+$set field:
+	The field $set typically have a BSON file.
+	$set:{ 
+	       age :19 ,
+	       city :"madurai" ,
+	       pincode:"626 101"
+             } 
+
+
+What happen when the updated filed is not present ?
+	
+	When we update a field in a document and it doesn't present in a document the it is added to that document.
+	This is possible cuz Collection has no specific schema.
+
+ 

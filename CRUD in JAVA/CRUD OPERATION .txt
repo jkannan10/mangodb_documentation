@@ -1,0 +1,39 @@
+CRUD OPERATION :
+
+INSERT :
+
+import org.bson.Document;
+
+
+Document studentDocument = new Document("name", "Alice")
+                        .append("age", 20)
+                        .append("grade", "A");
+
+studentCollection.insertOne(studentDocument);
+
+
+READ :
+
+import com.mongodb.client.FindIterable;
+import static com.mongodb.client.model.Filters.*;
+import java.util.Iterator;
+
+FindIterable<Document> students = studentCollection.find();
+
+
+Iterator<Document> iterator = students.iterator();
+while (iterator.hasNext()) {
+    Document student = iterator.next();
+    System.out.println(student.toJson());
+}
+
+UPDATE :
+
+// Update a student's grade
+studentCollection.updateOne(eq("name", "Alice"), 
+                            set("grade", "B"));
+
+DELETE :
+
+// Delete a student by name
+studentCollection.deleteOne(eq("name", "Alice"));

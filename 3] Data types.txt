@@ -1,0 +1,76 @@
+Data types :
+
+
+Data types in mongo DB
+
+Integer
+Boolean
+Double 
+Arrays
+Objects
+NULL
+Date
+Timestamp
+Object Id
+Code
+
+
+Differnce between BSON and JSON
+
+JSON: JSON is a text-based data interchange format.
+BSON: BSON  is a binary-encoded format. It uses binary data to represent the same kind of structured information found in JSON.
+
+BSON represents the same data in JSON in binary format.
+BSon supports additional datatype than JSON.
+
+In JSON data are represented in plain text format.
+
+
+Double:
+	64-bit floating-point value.
+ 	{"salary":726.239846}
+
+String:
+	{ "name": "John Doe" }
+
+Object:
+
+	{ "address": { "city": "New York", "zipcode": "10001" } }
+
+Array:
+	{ "grades": [85, 90, 88, 92] }
+
+Binary Data:
+
+	Binary data, such as images or files.
+	{ "avatar": BinData(0, "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAWElEQVR42mP8/w9zYBh9AgMEIABh5Cw1C1IAAAAASUVORK5CYII=") }
+
+ObjectId:
+	 A 12-byte identifier typically employed for the _id field.
+	{ "_id": ObjectId("5f7e2d1f3bc93c4e2f8562a5") }
+
+Boolean:
+	Boolean value (true/false).
+	{ "isPublished": true }
+
+Date:
+	{ "createdAt": ISODate("2022-01-01T12:34:56.789Z") }
+
+Null:
+	{ "optionalField": null }
+
+Regular Expression:
+	{ "regexPattern": /pattern/i }
+
+JavaScript Code:
+ 	{ "codeSnippet": { "$code": "function() { return 'Hello, World!'; }"
+
+
+Data Types which are not suppported in JSON 
+
+	- Date
+	- Timestamp
+	- ObjectId
+	- Binary data
+	- Regex
+	- JS code

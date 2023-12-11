@@ -1,0 +1,44 @@
+Mixing Operators :
+
+
+
+Certainly! Let's consider a hypothetical scenario where you have a collection named employees with documents representing employee records.
+Each document might have fields such as name, department, and salary.
+
+
+               Retrieve all documents from the employees collection where the department is "Sales" and the salary is greater than $50,000.
+               
+		Soln:
+
+                    db.employees.find( {"department":"Sales"} ,{"salary" : { $gt : 50000} );
+
+
+
+Using and and or :
+		
+               Retrieve documents from the employees collection where either the department is "Sales" and the salary is greater than $50,000, or the department is "Marketing."
+
+     db.employees.find( 
+			{ $or:[
+				{ $and:{"dept" : "Sales"},{"salary" : {$gt : 50000} } ,
+				       {"dept" : "marketing"}
+			      ] 
+			}
+		     );
+
+Using AND , OR , gte , lte , eq :
+
+		 Retrieve documents from the products collection where the price is either greater than or equal to $50 and less than or equal to $100, and the quantity is equal to 10.
+		 OR the category is "Electronics."
+
+	db.products.find(
+				{ $or : [ 
+						{ $and : [ 
+								{"price" : {$gte : 50 , $lte : 100}} ,
+								{"quantity" : {$eq : 10 }}
+							 ] 
+						} ,
+						{"category" : "Electronics"} 
+					]
+				}
+			);
